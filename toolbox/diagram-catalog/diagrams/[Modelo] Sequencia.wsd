@@ -1,0 +1,34 @@
+@startuml
+
+!theme vibrant
+autonumber 1.1
+
+actor Portal as P
+participant "Container 1" as C1
+queue RabbitMQ as RMQ
+participant "Container 2" as C2
+database "Base de dados\n de Exemplo" as BE
+participant "API Externa" as APIE
+
+activate P
+P -> C1++ : Envio de dados\n para validação
+C1 -> C1 : Valida o schema dos dados
+C1 -> BE++ : Busca dados\n por CPF
+BE -->> C1-- : Sucesso / Falha
+C1 ->> RMQ : Envio de dados\n para enriquecimento
+C1 -->> P-- : Sucesso / Falha
+deactivate P
+
+RMQ ->> C2++ : Envio de dados\n para enriquecimento
+C2 -> C2 : Valida o schema dos dados
+C2 -> BE++ : Busca dados\n por CPF
+BE -->> C2-- : Sucesso / Falha
+alt Sucesso
+	C2 -> APIE++ : Busca dados por CPF\n na API de consulta
+	APIE -->> C2-- : Sucesso / Falha
+	C2 -> BE++ : Salva dados enriquecidos
+	BE -->> C2-- : Sucesso / Falha
+end
+deactivate C2
+
+@enduml

@@ -1,0 +1,46 @@
+{
+  "name": "arch-model-repo",
+  "version": "1.0.0",
+  "description": "Toolbox e modelo para repositorios de arquitetura",
+  "main": "index.js",
+  "repository": "https://github.com/fulviocoelho/arch-model-repo.git",
+  "author": "Fulvio Coelho",
+  "license": "MIT",
+  "scripts": {
+    "build-plantuml": "node ./toolbox/process_plantuml/index.js",
+    "build-openapi": "node ./toolbox/process_api_builder/index.js",
+    "build-markdown": "node ./toolbox/process_markdown/index.js",
+    "build-all": "yarn build-plantuml && yarn build-openapi && yarn build-markdown",
+    "api-builder": "node ./toolbox/api-builder-cli/lib/index.js",
+    "doc-catalog": "node ./toolbox/doc-catalog/index.js",
+    "diagram-catalog": "node ./toolbox/diagram-catalog/index.js",
+    "sir": "cross-env PYTHON=python python ./toolbox/SIR/run.py",
+    "setup": "yarn && yarn husky install && pip install requests termcolor emoji pyyaml && yarn sir --profile set-up",
+    "cleanup": "yarn sir --profile clean-up",
+    "update": "node ./toolbox/updater/clean.js && node ./toolbox/updater/update.js && node ./toolbox/updater/clean.js",
+    "prereq-version": "node --version && npm --version && yarn --version && python --version && pip --version && java -version"
+  },
+  "devDependencies": {
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^7.0.4"
+  },
+  "dependencies": {
+    "clear": "^0.1.0",
+    "commander": "^12.1.0",
+    "cross-env": "^7.0.3",
+    "figlet": "^1.7.0",
+    "fs-extra": "^11.2.0",
+    "kleur": "^4.1.5",
+    "markdown-pdf": "^11.0.0",
+    "progress": "^2.0.3",
+    "rimraf": "^6.0.1",
+    "util": "^0.12.5",
+    "yaml": "^2.5.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

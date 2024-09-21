@@ -1,0 +1,54 @@
+@startuml
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!define ICONURL https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/v3.0.0/icons
+!include ICONURL/devicons2/php.puml
+!include ICONURL/devicons2/rabbitmq_original.puml
+!include FONTAWESOME/cog.puml
+!include FONTAWESOME/server.puml
+!include DEVICONS/ruby_on_rails.puml
+!include DEVICONS/postgresql.puml
+!include DEVICONS/database.puml
+
+AddRelTag("async", $lineStyle=DashedLine())
+AddRelTag("sync/async", $lineStyle=DottedLine())
+AddRelTag("novo", $lineColor="DarkOrchid")
+AddRelTag("removido", $lineColor="red")
+AddRelTag("impactado", $lineColor="LightGray")
+
+AddElementTag("novo_ext", $bgColor="#878a48")
+AddElementTag("impactado_ext", $bgColor="LightGray")
+AddElementTag("novo", $bgColor="DarkOrchid", $fontColor="White")
+AddElementTag("removido", $bgColor="red", $fontColor="White")
+AddElementTag("impactado", $bgColor="LightBlue", $fontColor="White")
+
+System_Boundary(sexemplo, "Sistema de Exemplo", "", $tags="novo"){
+    Container_Boundary(c1, "Container 1"){
+        Component(c1_1, "Processador", "Controller - Ruby", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", $tags="novo")
+        Component(c1_2, "Status de Processo", "Controller - Ruby", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", $tags="novo")
+        Component(c1_3, "Repositorio", "Ruby", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", $tags="novo")
+        Component(c1_4, "Sanitização e Validação", "Ruby", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", $tags="novo")
+        Component(c1_5, "Mensageria", "Ruby", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", $tags="novo")
+    }
+    ContainerDb(edb, "Base de Dados", "PostgresSQL", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam semper eleifend nulla ut porttitor.", $sprite="postgresql", $tags="novo")
+    Container(c2, "Container 2", "Ruby", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam semper eleifend nulla ut porttitor.", $sprite="ruby_on_rails", $tags="novo")
+}
+System_Ext(ext1, "Sistema X", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam semper eleifend nulla ut porttitor.", $sprite="server", $tags="")
+System_Ext(ext2, "Sistema Y", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam semper eleifend nulla ut porttitor.", $sprite="server", $tags="")
+
+Rel(ext1, c1_2, "Chama API", "HTTP", $tags="novo")
+Rel(ext1, c1_1, "Chama API", "HTTP", $tags="novo")
+Rel(c1_1, c1_3, "Usa", $tags="novo")
+Rel(c1_1, c1_4, "Usa", $tags="novo")
+Rel(c1_1, c1_5, "Usa", $tags="novo")
+Rel(c1_5, c2, "Envia dados para processamento", "RabbitMQ", $tags="async+novo")
+Rel(c1_2, c1_3, "Usa", $tags="novo")
+Rel(c1_3, edb, "Manipula info", "Connector", $tags="novo")
+Rel(c2, ext2, "Busca dados", "HTTP", $tags="novo")
+Rel(c2, edb, "Manipula info", "Connector", $tags="novo")
+
+SHOW_LEGEND()
+
+@enduml

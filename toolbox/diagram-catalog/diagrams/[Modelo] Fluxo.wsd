@@ -1,0 +1,22 @@
+@startuml
+
+!theme vibrant
+
+start
+:Request recebido;
+if (Schema valido?) then (Sim)
+	:Busca dados de\n cliente por CPF\n na base de dados;
+	if (Existem dados\n na base de dados?) then (Sim)
+		:Enriquece dados com\n dados de precadastro;
+		#palegreen:Envia dados recebidos em fila;
+		end
+	else (Não)
+		#pink:Retorna mensagem\n de erro por\n falta de pre cadastro;
+		end
+	endif
+else (Não)
+	#pink:Retorna mensagem\n de erro para\n o cliente;
+	end
+endif
+
+@enduml

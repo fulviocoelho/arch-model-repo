@@ -1,0 +1,17 @@
+{
+    "extends": ["tslint:recommended", "tslint-config-prettier"],
+    "rules": {
+        "variable-name": [
+          true,
+          "allow-snake-case"
+        ],
+        "no-empty": false,
+        "no-string-literal": false,
+        "array-type": false,
+        "no-empty-interface": false,
+        "no-shadowed-variable": false,
+        "prefer-const": false,
+        "no-console": false,
+        "ban-types": false
+    }
+}

@@ -32,8 +32,12 @@ Os seguintes comandos estão disponíveis:
 
 * **build-plantuml**: Gera imagens a partir dos diagramas PlantUML.
 * **build-openapi**: Gera documentação OpenAPI a partir dos projetos de API.
-* **build-all**: Executa `build-plantuml` e `build-openapi`.
+* **build-markdown**: Gera documentos em PDF a partir dos arquivos markdown da pasta Docs.
+* **build-all**: Executa `build-plantuml`, `build-openapi` e `build-markdown`.
+* **doc-catalog**: Disponibiliza um catalogo de modelos de documentações relativos a arquitetura e projetos de software.
+* **diagram-catalog**: Disponibiliza um catalogo de modelos de diagramas usando plantuml.
 * **api-builder**: Inicia o CLI de construção de API para criar uma nova API.
+* **update**: Atualiza a toolbox de acordo com os ultimos commits deste repositorio.
 * **setup**: Instala as dependências e configura o ambiente de desenvolvimento.
 * **cleanup**: Todo o repositório deixando somente as ferramentas.
 * **prereq-version**: Exibe as versões dos prerequisitps para o repositorio.

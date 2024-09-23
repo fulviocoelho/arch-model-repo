@@ -2,6 +2,7 @@
     "recommendations": [
         "jebbs.plantuml",
         "donjayamanne.githistory",
-        "yzane.markdown-pdf"
+        "yzane.markdown-pdf",
+        "cweijan.vscode-office"
     ]
 }

@@ -8,7 +8,7 @@ const kleur = require('kleur'); // Importa a biblioteca kleur
 
 const execAsync = promisify(exec);
 
-async function updateProjectFromGit(projectDir, gitRepoUrl, branch = 'main', pastaACopiar) {
+async function updateProjectFromGit(projectDir, gitRepoUrl, branch = 'main', pastasACopiar) {
   try {
     console.log(kleur.blue(`Iniciando atualização do projeto em '${projectDir}'...`));
 
@@ -40,10 +40,12 @@ async function updateProjectFromGit(projectDir, gitRepoUrl, branch = 'main', pas
     fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
 
     // Copia a pasta para a raiz do projeto
-    console.log(kleur.cyan(`Copiando a pasta '${pastaACopiar}' para a raiz do projeto...`));
-    const pastaOrigem = path.join(tempDir, pastaACopiar);
-    const pastaDestino = path.join(projectDir, pastaACopiar);
-    copySync(pastaOrigem, pastaDestino, { overwrite: true });
+    for (const pastaACopiar of pastasACopiar) {
+      console.log(kleur.cyan(`Copiando a pasta '${pastaACopiar}' para a raiz do projeto...`));
+      const pastaOrigem = path.join(tempDir, pastaACopiar);
+      const pastaDestino = path.join(projectDir, pastaACopiar);
+      copySync(pastaOrigem, pastaDestino, { overwrite: true });
+    }
 
     console.log(kleur.green(`O projeto em '${projectDir}' foi atualizado com sucesso!`));
   } catch (error) {
@@ -56,6 +58,6 @@ const caminhoPastaAtual = path.dirname(process.argv[1]);
 const projectDir = caminhoPastaAtual.substring(0, caminhoPastaAtual.length-16); // Substitua pelo caminho do seu projeto
 const gitRepoUrl = 'https://github.com/fulviocoelho/arch-model-repo.git'; // Substitua pelo URL do repositório Git
 const branch = 'main'; // Substitua pelo nome do branch desejado
-const pastaACopiar = 'toolbox'; // Substitua pelo nome da pasta a ser copiada
+const pastasACopiar = ['toolbox', '.vscode', '.husky']; // Substitua pelo nome da pasta a ser copiada
 
-updateProjectFromGit(projectDir, gitRepoUrl, branch, pastaACopiar);
+updateProjectFromGit(projectDir, gitRepoUrl, branch, pastasACopiar);

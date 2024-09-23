@@ -17,7 +17,7 @@
     "sir": "cross-env PYTHON=python python ./toolbox/SIR/run.py",
     "setup": "yarn && yarn husky install && pip install requests termcolor emoji pyyaml && yarn sir --profile set-up",
     "cleanup": "yarn sir --profile clean-up",
-    "update": "node ./toolbox/updater/clean.js && node ./toolbox/updater/update.js && node ./toolbox/updater/clean.js",
+    "update": "node ./toolbox/updater/clean.js && node ./toolbox/updater/update.js && node ./toolbox/updater/clean.js && yarn setup",
     "prereq-version": "node --version && npm --version && yarn --version && python --version && pip --version && java -version"
   },
   "devDependencies": {

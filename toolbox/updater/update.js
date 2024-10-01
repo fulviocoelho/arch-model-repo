@@ -2,13 +2,13 @@ const { exec, execSync } = require('child_process');
 const { promisify } = require('util');
 const fs = require('fs');
 const path = require('path');
-const { copySync } = require('fs-extra');
+const { copySync, copyFileSync } = require('fs-extra');
 const { rimraf } = require('rimraf');
 const kleur = require('kleur'); // Importa a biblioteca kleur
 
 const execAsync = promisify(exec);
 
-async function updateProjectFromGit(projectDir, gitRepoUrl, branch = 'main', pastasACopiar) {
+async function updateProjectFromGit(projectDir, gitRepoUrl, branch = 'main', pastasACopiar, arquivosACopiar) {
   try {
     console.log(kleur.blue(`Iniciando atualização do projeto em '${projectDir}'...`));
 
@@ -47,6 +47,13 @@ async function updateProjectFromGit(projectDir, gitRepoUrl, branch = 'main', pas
       const pastaDestino = path.join(projectDir, pastaACopiar);
       copySync(pastaOrigem, pastaDestino, { overwrite: true });
     }
+    
+    for (const arquivoACopiar of arquivosACopiar){
+      console.log(kleur.green(`Copiando o arquivo '${arquivoACopiar}' para a raiz do projeto...`));
+      const arquivoOrigem = path.join(tempDir, arquivoACopiar);
+      const arquivoDestino = path.join(projectDir, arquivoACopiar);
+      copyFileSync(arquivoOrigem, arquivoDestino);
+    }
 
     console.log(kleur.green(`O projeto em '${projectDir}' foi atualizado com sucesso!`));
   } catch (error) {
@@ -60,5 +67,6 @@ const projectDir = caminhoPastaAtual.substring(0, caminhoPastaAtual.length-16); 
 const gitRepoUrl = 'https://github.com/fulviocoelho/arch-model-repo.git'; // Substitua pelo URL do repositório Git
 const branch = 'main'; // Substitua pelo nome do branch desejado
 const pastasACopiar = ['toolbox', '.vscode', '.husky']; // Substitua pelo nome da pasta a ser copiada
+const arquivosACopiar = ['.gitignore']; // Substitua pelo nome do arquivo a ser copiado
 
-updateProjectFromGit(projectDir, gitRepoUrl, branch, pastasACopiar);
+updateProjectFromGit(projectDir, gitRepoUrl, branch, pastasACopiar, arquivosACopiar);

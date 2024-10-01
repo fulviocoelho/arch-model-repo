@@ -41,6 +41,7 @@ Os seguintes comandos estão disponíveis:
 * **setup**: Instala as dependências e configura o ambiente de desenvolvimento.
 * **cleanup**: Todo o repositório deixando somente as ferramentas.
 * **prereq-version**: Exibe as versões dos prerequisitps para o repositorio.
+* **commands:** Exibe os comandos disponiveis.
 
 ### Husky e Commitizen
 

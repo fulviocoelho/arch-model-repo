@@ -1,7 +1,7 @@
 {
   "name": "arch-model-repo",
   "version": "1.0.0",
-  "description": "Toolbox e modelo para repositorios de arquitetura",
+  "description": "Repositorio modelo para projetos de arquitetura, contem toolbox para facilitar a documentação de novas arquiteturas",
   "main": "index.js",
   "repository": "https://github.com/fulviocoelho/arch-model-repo.git",
   "author": "Fulvio Coelho",

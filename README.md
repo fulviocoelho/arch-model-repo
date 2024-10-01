@@ -2,6 +2,14 @@
 
 Este repositório armazena trabalhos de arquitetura, incluindo documentação, diagramas e código-fonte de projetos de API.
 
+### Instalação
+
+1. **Copie o instalador**
+    - Copie o arquivo installer.py para o seu repositório
+
+2. **Execute a instalação**
+    - Execute o seguinte comando `python ./installer.py`
+
 ### Estrutura de Pastas
 
 O repositório é organizado da seguinte forma:

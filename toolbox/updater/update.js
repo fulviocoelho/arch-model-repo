@@ -31,6 +31,7 @@ async function updateProjectFromGit(projectDir, gitRepoUrl, branch = 'main', pas
 
     // Atualiza as dependências e dependências de desenvolvimento
     const packageJson = require(packageJsonPath);
+    packageJson.config = tempPackageJson.config;
     packageJson.scripts = tempPackageJson.scripts;
     packageJson.dependencies = tempPackageJson.dependencies;
     packageJson.devDependencies = tempPackageJson.devDependencies;

@@ -49,7 +49,7 @@ async function updateProjectFromGit(projectDir, gitRepoUrl, branch = 'main', pas
     }
     
     for (const arquivoACopiar of arquivosACopiar){
-      console.log(kleur.green(`Copiando o arquivo '${arquivoACopiar}' para a raiz do projeto...`));
+      console.log(kleur.cyan(`Copiando o arquivo '${arquivoACopiar}' para a raiz do projeto...`));
       const arquivoOrigem = path.join(tempDir, arquivoACopiar);
       const arquivoDestino = path.join(projectDir, arquivoACopiar);
       copyFileSync(arquivoOrigem, arquivoDestino);

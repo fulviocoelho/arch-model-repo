@@ -109,6 +109,8 @@ app/src/projects/*
 # lib folder
 lib/
 
+/toolbox/SIR/tools/__pycache__
+/toolbox/SIR/__pycache__
 /node_modules
 /out
 yarn.lock

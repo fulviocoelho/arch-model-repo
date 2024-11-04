@@ -3,6 +3,7 @@
         "jebbs.plantuml",
         "donjayamanne.githistory",
         "yzane.markdown-pdf",
-        "cweijan.vscode-office"
+        "cweijan.vscode-office",
+        "hediet.vscode-drawio"
     ]
 }

@@ -1,94 +1,85 @@
-## Documento de Serviços - [Nome do Serviço]
+## Documentação do Serviço: [Nome do Serviço]
+
+**Data da Última Atualização:** [Data da última atualização]
+
+**Versão:** [Versão do serviço]
+
+**Responsável:** [Nome do desenvolvedor responsável]
 
 ### 1. Introdução
 
-Este documento descreve os serviços do [Nome do Serviço], incluindo suas funcionalidades, componentes, integrações, banco de dados e códigos de erro.
+Esta documentação visa detalhar o serviço [Nome do Serviço], abrangendo seus objetivos, funcionamento, interações com bancos de dados, possíveis erros, medidas de segurança e mecanismos de monitoramento.
 
-### 2. Componentes
+### 2. Responsabilidade/Domínio
 
-#### 2.1. Componentes Principais
+O serviço [Nome do Serviço] tem como objetivo [descrever a finalidade principal do serviço de forma concisa e clara]. Ele é responsável por [descrever as principais funcionalidades do serviço, listando as ações que ele realiza]. O serviço atua no domínio de [especificar o escopo do serviço, descrevendo as áreas que ele abrange]. 
 
-| Título | Callers | Descrição |
-|---|---|---|
-| {Nome do componente} | SQS, API | [Breve descrição da funcionalidade do componente] |
+Ele depende de [mencionar os outros serviços ou sistemas dos quais o serviço depende, explicando brevemente a natureza da dependência].
 
-#### 2.2. Componentes Adicionais
+### 3. Base de Código e Runtime
 
-[Se houver componentes adicionais, liste-os aqui com suas respectivas descrições]
+* **Repositório:** [Nome e link para o repositório do serviço]
+* **Linguagem de Programação:** [Nome da linguagem de desenvolvimento e os frameworks utilizados]
+* **Runtime:** [Onde o serviço esta sendo executado e qual sua identificação. Ex: Servidor on premisses (informar IP ou DNS do servidor), Cloud (informar qual cloud, qual recurso da cloud e identificador do serviço neste recuro)]
 
-### 3. Banco de Dados
+### 4. Bases de Dados
 
-#### 3.1. DynamoDB
+O serviço [Nome do Serviço] utiliza o(s) banco(s) de dados:
 
-##### 3.1.1. Tabela: `{stage}_{tenant}_event_`
+* **Nome do Banco de Dados:** [Nome do banco de dados principal utilizado pelo serviço.]
+    * **Tipo de Banco de Dados:** [Ex: MySQL, PostgreSQL, MongoDB.]
+    * **Tabelas:**
+        * **[Nome da tabela]:** A tabela [Nome da tabela] tem como finalidade [Descrever a finalidade da tabela e os dados que ela armazena.]
+            * **Schema:**
+            | Campo | Tipo de Dado | Descrição |
+            | ----- | ------------ | --------- |
+            | [Nome do campo 1] | [Tipo de dado do campo 1] | [Descrição do campo 1] |
+            | [Nome do campo 2] | [Tipo de dado do campo 2] | [Descrição do campo 2] |
+            | ... | ... | ... |
 
-* **Descrição:** Esta tabela contém todos os eventos registrados na plataforma.
-* **Metadata:**
+### 5. Range de Erros
 
-| Coluna | Tipo | Descrição |
-|---|---|---|
-| [Nome da Coluna 1] | [Tipo de Dado] | [Descrição da Coluna 1] |
-| [Nome da Coluna 2] | [Tipo de Dado] | [Descrição da Coluna 2] |
-| ... | ... | ... |
+O serviço [Nome do Serviço] pode retornar diversos códigos de erro, cada um representando uma situação específica. Segue a baixo alguns destes erros e o range de erros possivel para este serviço: 
 
-#### 3.2. MongoDB
-
-##### 3.2.1. Tabela: {Name by which we find the table}
-
-* **Descrição:** [Descrição do conteúdo da tabela]
-* **Metadata:**
-
-| Coluna | Tipo | Descrição |
-|---|---|---|
-| [Nome da Coluna 1] | [Tipo de Dado] | [Descrição da Coluna 1] |
-| [Nome da Coluna 2] | [Tipo de Dado] | [Descrição da Coluna 2] |
-| ... | ... | ... |
-
-### 4. Códigos de Erro
-
-* **Faixa de Códigos:** De {FirstCodeNumberAvailable} a {LastCodeNumberAvailable}
+* **Faixa de Códigos:** De [Primeiro codigo de erro disponivel] a [Ultimo codigo de erro disponivel]
 * **Lista de Códigos:**
-
-| Código | Descrição |
-|---|---|
-| [Código 1] | [Descrição do erro 1] |
-| [Código 2] | [Descrição do erro 2] |
-| ... | ... |
-
-### 5. Integrações
-
-* **Integrações com outros serviços:** [Liste os serviços com os quais o serviço se integra]
-* **Protocolos de comunicação:** [Liste os protocolos utilizados para comunicação com outros serviços]
+  | Código | Descrição |
+  |---|---|
+  | [Código 1] | [Descrição do erro 1] |
+  | [Código 2] | [Descrição do erro 2] |
+  | ... | ... |
 
 ### 6. Segurança
 
-* **Autenticação:** [Descreva o mecanismo de autenticação utilizado]
-* **Autorização:** [Descreva o mecanismo de autorização utilizado]
-* **Segurança de dados:** [Descreva as medidas de segurança de dados implementadas]
+O serviço [Nome do Serviço] implementa as seguintes medidas de segurança para garantir a proteção dos dados e a integridade do sistema:
+
+* **Autenticação:** [Descreva como o serviço autentica usuários e quais mecanismos de autenticação são utilizados.]
+* **Autorização:** [Explique como o serviço controla o acesso a recursos e quais regras de autorização são aplicadas.]
+* **Criptografia:** [Indique se e como os dados são criptografados durante o transporte ou armazenamento.]
+* **Medidas de Segurança:** [Liste outras medidas de segurança implementadas no serviço, como firewalls, antivírus, etc.]
+* **Políticas de Segurança:** [Faça referência às políticas de segurança relevantes para o serviço.]
 
 ### 7. Monitoramento e Logs
 
-* **Monitoramento:** [Descreva as ferramentas e métricas utilizadas para monitorar o serviço]
-* **Logs:** [Descreva o sistema de logs utilizado e os tipos de informações registradas]
+O serviço [Nome do Serviço] é monitorado continuamente por meio de das seguintes ferramentas: 
 
-### 8. Documentação
+* **Ferramentas de Monitoramento:** [Liste as ferramentas de monitoramento utilizadas para acompanhar o desempenho e a saúde do serviço.]
+* **Métricas:** [Descreva as principais métricas monitoradas, como tempo de resposta, taxa de sucesso, uso de recursos, etc.]
+* **Alertas:** [Explique como os alertas são configurados e quais eventos desencadeiam alertas.]
+* **Logs:** [Descreva como os logs do serviço são gerados, armazenados e acessados. Quais informações são registradas?] 
 
-* **Documentação do código:** [Descreva a documentação do código, incluindo ferramentas e padrões utilizados]
-* **Documentação de APIs:** [Descreva a documentação das APIs, incluindo ferramentas e padrões utilizados]
+### 8. Problemas Conhecidos
 
-### 9. Histórico de Versões
+Alguns problemas comuns podem ocorrer durante a execução do serviço [Nome do Serviço]. 
 
-| Data | Versão | Descrição | Autor |
-|---|---|---|---|
-| [Data] | [Versão] | [Descrição da alteração] | [Nome do Autor] |
+* **Problema 1:** [Descrever o problema, incluindo sintomas e causas.]
+    * **Solução:** [Descrever a solução para o problema, incluindo passos detalhados.]
 
-### 10. Contatos
-
-* **Tech Lead:** [Nome do Tech Lead]
-* **Equipe de Desenvolvimento:** [Lista dos membros da equipe de desenvolvimento]
+* **Problema 2:** [Descrever o problema, incluindo sintomas e causas.]
+    * **Solução:** [Descrever a solução para o problema, incluindo passos detalhados.]
 
 **Observações:**
 
-* Este documento é um modelo e deve ser adaptado de acordo com as necessidades específicas do serviço.
-* É importante manter a documentação atualizada com as alterações no serviço.
-* A documentação deve ser clara, concisa e fácil de entender.
+* Esta documentação deve ser atualizada a cada nova versão do serviço ou modificação significativa.
+* Mantenha a documentação concisa, clara e informativa para facilitar o entendimento por outros desenvolvedores.
+* Inclua exemplos e informações detalhadas que podem ser úteis para o entendimento do serviço.

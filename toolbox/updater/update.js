@@ -2,7 +2,7 @@ import { exec as execCallback, execSync } from 'child_process';
 import { promisify } from 'util';
 import fs from 'fs';
 import path from 'path';
-import { copySync, copyFileSync } from 'fs-extra';
+import { copySync } from 'fs-extra/esm';
 import { rimraf } from 'rimraf';
 import { fileURLToPath } from 'url';
 
@@ -57,7 +57,7 @@ async function updateProjectFromGit(projectDir, gitRepoUrl, branch = 'main', pas
       console.log(`[INFO] Copiando o arquivo '${arquivoACopiar}' para a raiz do projeto...`);
       const arquivoOrigem = path.join(tempDir, arquivoACopiar);
       const arquivoDestino = path.join(projectDir, arquivoACopiar);
-      copyFileSync(arquivoOrigem, arquivoDestino);
+      copySync(arquivoOrigem, arquivoDestino);
     }
 
     console.log(`[SUCCESS] O projeto em '${projectDir}' foi atualizado com sucesso!`);

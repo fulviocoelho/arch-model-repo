@@ -31,7 +31,7 @@ def main():
 
     print("Instalando dependencias NPM")
     os.chdir(root_folder)
-    os.system('yarn add rimraf')
+    os.system('yarn add fs-extra rimraf')
     os.system('npm pkg set type=module')
 
     print("Realizando update")

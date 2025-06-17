@@ -16,7 +16,7 @@
     "diagram-catalog": "node ./toolbox/diagram-catalog/index.js",
     "setup": "yarn && yarn husky install && pip install requests termcolor emoji pyyaml && cross-env PYTHON=python python ./toolbox/SIR/run.py --profile set-up",
     "cleanup": "cross-env PYTHON=python python ./toolbox/SIR/run.py --profile clean-up",
-    "update": "node ./toolbox/updater/clean.js && node ./toolbox/updater/update.js && node ./toolbox/updater/clean.js && yarn setup",
+    "update": "npm pkg set type=module && node ./toolbox/updater/clean.js && node ./toolbox/updater/update.js && node ./toolbox/updater/clean.js && yarn setup && npm pkg set type=commonjs",
     "prereq-version": "node --version && npm --version && yarn --version && python --version && pip --version && java -version",
     "commands": "node ./toolbox/help.js"
   },
